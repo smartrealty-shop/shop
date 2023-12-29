@@ -29,7 +29,7 @@ export const GET = async ({ url, locals: { supabase } }) => {
 		const { error } = await supabase.auth.verifyOtp({ token_hash, type });
 		console.error(error);
 		if (!error) {
-			throw redirect(303, `${next.slice(1)}`);
+			throw redirect(303, `/${next.slice(1)}`);
 		}
 	}
 
