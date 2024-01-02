@@ -6,7 +6,7 @@
 	export let iconName: string | null = null;
 </script>
 
-<div class="card card-compact card-side bg-neutral shadow-lg">
+<div class="card card-compact card-side bg-neutral rounded-none lg:rounded-2xl">
 	{#if iconName !== null}
 		<figure class="px-6">
 			<div class="btn btn-circle btn-secondary">
@@ -17,11 +17,25 @@
 		</figure>
 	{/if}
 	<div class="card-body px-2">
-		<h2 class="card-title">{title}</h2>
-		<p>{text}</p>
+		<h2 class="text-lg lg:text-xl">{title}</h2>
+		<p class="text-sm">{text}</p>
 	</div>
 </div>
 
 <style lang="postcss">
 	/*  */
+	.card-titlee {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem /* 8px */;
+		font-size: 1.25rem /* 20px */;
+		line-height: 1.75rem /* 28px */;
+		font-weight: 600;
+	}
+	.card-compact .card-titlee {
+		margin-bottom: 0.25rem /* 4px */;
+	}
+	.card-normal .card-titlee {
+		margin-bottom: 0.75rem /* 12px */;
+	}
 </style>

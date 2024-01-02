@@ -4,7 +4,7 @@
 </script>
 
 <div class="">
-	<h1 class="text-2xl font-light py-4 text-center">Персональный менеджер</h1>
+	<h1 class="text-xl sm:text-3xl font-light py-4 text-center">Персональный менеджер</h1>
 
 	<p class="">
 		Для каждого клиента сервиса мы предоставляем персонального менеджера, который будет вести Вашу

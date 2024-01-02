@@ -3,7 +3,7 @@
 </script>
 
 <div class="flex flex-col items-center">
-	<h1 class="text-2xl font-light py-4 text-center">Всегда под рукой</h1>
+	<h1 class="text-xl sm:text-3xl font-light py-4 text-center">Всегда под рукой</h1>
 
 	<p class="text-center px-4">
 		При дизайне сервиса мы ориентируемся на клиента, готового заниматься сделкой где угодно и когда

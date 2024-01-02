@@ -1,5 +1,4 @@
 <script lang="ts">
-	//
 	import mock1 from '$lib/images/mock1.webp';
 	import mock2 from '$lib/images/mock2.webp';
 	import mock3 from '$lib/images/mock3.webp';
@@ -8,7 +7,7 @@
 </script>
 
 <div class="">
-	<h1 class="text-2xl font-light py-4 text-center">Статистика сервиса</h1>
+	<h1 class="text-xl sm:text-3xl font-light py-4 text-center">Статистика сервиса</h1>
 
 	<div class="screen-wrapper">
 		<div class="screen-stack">
@@ -20,7 +19,8 @@
 		</div>
 	</div>
 
-	<div class="grid p-4 gap-4 grid-cols-2 sm:grid-rows-4">
+	<!--  grid-cols-2 md:grid-flow-row -->
+	<div class="grid p-4 gap-4 grid-cols-2 sm:grid-cols-4">
 		<div class="stata">
 			<p class="stata-text">Объектов</p>
 			<p class="stata-number">200+</p>
@@ -52,6 +52,7 @@
 
 	.stata-number {
 		@apply font-bold text-2xl;
+		@apply md:text-4xl;
 	}
 
 	.screen-wrapper {

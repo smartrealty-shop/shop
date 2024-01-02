@@ -53,10 +53,11 @@
 
 <style lang="postcss">
 	.stat-wrapper {
-		@apply flex flex-row items-center py-2;
+		@apply flex flex-row items-center py-6 lg:p-6;
+		justify-content: space-between;
 	}
 
-	.figure-wrapper {
-		@apply h-80 w-56;
+	.figure-wrapper img {
+		@apply h-[300px] w-[400px];
 	}
 </style>

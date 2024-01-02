@@ -12,7 +12,7 @@
 
 <!-- my-10 p-4 xl:p-10 -->
 <!-- p-4 lg:p-10 -->
-<div class="mx-auto">
+<div class="lg:p-2">
 	<div class={'grid gap-4' + (items.length % 2 === 0 ? ' lg:grid-cols-2' : ' lg:grid-cols-3')}>
 		{#each items as i}
 			<Card title={i.title} text={i.text} iconName={i.iconName} />
