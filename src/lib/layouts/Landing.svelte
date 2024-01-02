@@ -7,10 +7,6 @@
 	import Manager from '$lib/components/Manager.svelte';
 	import Steps from '$lib/components/Steps.svelte';
 	import Mobile from '$lib/components/Mobile.svelte';
-	// import Chat from '$lib/components/Chat.svelte';
-	// import HeroCards from '$lib/components/HeroCards.svelte';
-	// import Mobile from '$lib/components/Mobile.svelte';
-	// import Stats from '$lib/components/Stats.svelte';
 
 	const cardsOne = [
 		{
@@ -37,51 +33,37 @@
 
 <svelte:window bind:scrollY={y} />
 
-<nav class="navbar z-10 w-full bg-base-100 fixed top-0" class:shadow-xl={y > 5}>
-	<div class="container mx-auto max-w-screen-lg items-center justify-between px-4">
-		<div class="flex-1 whitespace-nowrap text-2xl font-semibold">
-			<a href="/" class="">
-				<img class="h-8" src={logo} alt="logo" />
-			</a>
-		</div>
-	</div>
-</nav>
-
-<!-- <div class="bg-base-100">
-</div> -->
-
-<!-- bg-base-300 -->
-<div class="bg-base-100 pt-16">
-	<div class="container mx-auto max-w-screen-xl">
-		<Hero
-			counter={6286}
-			header="Портал недвижимости в&nbsp;ОАЭ"
-			text="для&nbsp;профессионалов"
-			buttonText="Присоединиться"
-		/>
-		<div class="-mt-10">
-			<CardsGrid items={cardsOne} />
-		</div>
-		<Stats />
-		<Manager />
-		<Steps />
-		<Mobile />
-		<!-- 
-		<Stats
-			header="Статистика сервиса"
-			subhead="Немного цифр, демонстрирующих возможности $martRealty.shop. Это возможности, которые мы предлагаем всем нашим клиентам!"
-		/>
-		<Chat />
-		<HeroCards />
-		<Mobile /> -->
+<div class="bg-base-100">
+	<div class="container mx-auto max-w-screen-lg">
+		<nav class="navbar">
+			<div class="flex-1 whitespace-nowrap text-2xl font-semibold">
+				<a href="/" class="">
+					<img class="h-8" src={logo} alt="logo" />
+				</a>
+			</div>
+		</nav>
+		<main class="py-4">
+			<Hero
+				counter={6286}
+				header="Портал недвижимости в&nbsp;ОАЭ"
+				text="для&nbsp;профессионалов"
+				buttonText="Присоединиться"
+			/>
+			<div class="-mt-10">
+				<CardsGrid items={cardsOne} />
+			</div>
+			<Stats />
+			<Manager />
+			<Steps />
+			<Mobile />
+		</main>
+		<footer class="footer footer-center bg-base-200 p-4 lg:rounded">
+			<aside>
+				<p class="mx-auto">&copy; 2023 — Smart Realty &trade;. All rights reserved</p>
+			</aside>
+		</footer>
 	</div>
 </div>
-
-<footer class="footer border-t-1 bg-primary text-primary-content mt-8">
-	<div class="container mx-auto w-full max-w-screen-lg p-4 justify-center">
-		<p class="">&copy; 2023 — Smart Realty &trade;</p>
-	</div>
-</footer>
 
 <style lang="postcss">
 	/*  */
