@@ -20,38 +20,6 @@ export const load: PageServerLoad = async ({ locals: { getSession } }) => {
 };
 
 export const actions: Actions = {
-	password: async ({ request, locals: { supabase } }) => {
-		const formData = await request.formData();
-		const email = formData.get('email');
-		const password = formData.get('password');
-
-		if (typeof email !== 'string' || typeof password !== 'string') {
-			return fail(400, {
-				error: 'Missing email / password'
-			});
-		}
-
-		const { error } = await supabase.auth.signInWithPassword({
-			email,
-			password
-		});
-
-		if (error) {
-			if (error.status === 400) {
-				return fail(400, {
-					message: 'Invalid credentials!',
-					values: { email }
-				});
-			}
-
-			return fail(500, {
-				message: 'We had a problem logging you in! Try again?',
-				values: { email }
-			});
-		}
-
-		throw redirect(303, '/profile');
-	},
 	magic: async ({ request, url, locals: { supabase } }) => {
 		const formData = await request.formData();
 		const email = formData.get('email');
