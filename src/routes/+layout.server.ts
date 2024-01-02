@@ -1,10 +1,12 @@
-import { env } from '$env/dynamic/private';
+import { dev } from '$app/environment';
+import { inject } from '@vercel/analytics';
 
 import type { LayoutServerLoad } from './$types';
 
+inject({ mode: dev ? 'development' : 'production' });
+
 export const load: LayoutServerLoad = async ({ locals: { getSession } }) => {
 	return {
-		analyticsId: env.VERCEL_ANALYTICS_ID,
 		session: await getSession()
 	};
 };

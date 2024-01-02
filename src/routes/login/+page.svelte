@@ -2,7 +2,9 @@
 	import { enhance } from '$app/forms';
 	import type { Snapshot } from './$types';
 
-	let loginOrSignup: 'login' | 'signup' = 'login';
+	import IconLogo from '$lib/components/IconLogo.svelte';
+
+	// let loginOrSignup: 'login' | 'signup' = 'login';
 
 	let formState: 'idle' | 'submitting' | 'done' | Error = 'idle';
 
@@ -15,6 +17,79 @@
 	};
 </script>
 
+<section class="">
+	<div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+		<a href="/" class="mb-6">
+			<IconLogo size={2} />
+		</a>
+
+		<div class="bg-neutral w-full rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+			<div class="flex flex-col p-6 space-y-4 md:space-y-6 sm:p-8">
+				<form
+					class="space-y-4 md:space-y-6"
+					action="?/magic"
+					method="post"
+					use:enhance={() => {
+						formState = 'submitting';
+						confirmationEmail = email;
+
+						return async ({ result, update }) => {
+							if (result.type === 'failure') {
+								const message =
+									typeof result.data?.message === 'string'
+										? result.data?.message
+										: `There was a problem sending magic link to ${confirmationEmail}...`;
+								formState = new Error(message);
+							}
+
+							if (result.type === 'success') {
+								formState = 'done';
+								if (typeof result.data?.email === 'string') {
+									confirmationEmail = result.data.email;
+								}
+							}
+
+							await update();
+						};
+					}}
+				>
+					<div>
+						<label>
+							<p class="text-sm font-medium mb-2">Электронная почта</p>
+							<input
+								class="input input-secondary bg-neutral w-full"
+								autocomplete="username"
+								type="email"
+								name="email"
+								placeholder="john@doe.com"
+								bind:value={email}
+								required
+							/>
+						</label>
+					</div>
+					<input
+						class="btn btn-primary focus:btn-secondary w-full"
+						disabled={formState !== 'idle'}
+						type="submit"
+						value="Получить волшебную ссылку!"
+					/>
+				</form>
+			</div>
+		</div>
+		<div class="mx-auto text-center h-24 pt-4">
+			{#if formState === 'submitting'}
+				<p class="loading loading-dots loading-lg mx-auto"></p>
+			{/if}
+			{#if formState === 'done' && confirmationEmail !== null}
+				<!-- TODO translate -->
+				<p>Please check your email:</p>
+				<p><strong>{confirmationEmail}</strong></p>
+			{/if}
+		</div>
+	</div>
+</section>
+
+<!--
 <main class="container flex grow flex-col">
 	<section>
 		{#if loginOrSignup === 'login'}
@@ -45,13 +120,35 @@
 					};
 				}}
 			>
-				<input class="input input-bordered w-full max-w-xs" type="email" name="email" bind:value={email} required />
-				<input class="btn" disabled={formState !== 'idle'} type="submit" value="Login with magic link!" />
+				<input
+					class="input input-bordered w-full max-w-xs"
+					type="email"
+					name="email"
+					bind:value={email}
+					required
+				/>
+				<input
+					class="btn"
+					disabled={formState !== 'idle'}
+					type="submit"
+					value="Login with magic link!"
+				/>
 			</form>
 			<form action="?/password" method="post" use:enhance>
 				<input type="hidden" name="email" bind:value={email} required />
-				<input class="input input-bordered w-full max-w-xs" type="password" name="password" minlength="6" required />
-				<input class="btn" disabled={formState !== 'idle'} type="submit" value="Login with email + password" />
+				<input
+					class="input input-bordered w-full max-w-xs"
+					type="password"
+					name="password"
+					minlength="6"
+					required
+				/>
+				<input
+					class="btn"
+					disabled={formState !== 'idle'}
+					type="submit"
+					value="Login with email + password"
+				/>
 			</form>
 			<button
 				on:click={() => {
@@ -132,6 +229,7 @@
 		{/if}
 	</section>
 </main>
+-->
 
 <style lang="postcss">
 	/* button {

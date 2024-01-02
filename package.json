@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "devDependencies": {
     "@iconify/svelte": "^3.1.6",
-    "@neoconfetti/svelte": "^1.0.0",
     "@supabase/ssr": "^0.0.10",
     "@supabase/supabase-js": "^2.39.1",
     "@sveltejs/adapter-vercel": "^4.0.3",
@@ -42,6 +41,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@vercel/analytics": "^1.1.1",
     "@vercel/speed-insights": "^1.0.2"
   }
 }
