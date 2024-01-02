@@ -6,9 +6,9 @@ export default {
 		themes: [
 			{
 				smartrealty: {
-					primary: 'oklch(58% 0.109 268)',
+					primary: 'oklch(58.89% 0.113 268.65)', // #6179C0
 					'primary-content': 'oklch(98% 0 0)',
-					secondary: 'oklch(47.16% 0.08 257.84)',
+					secondary: 'oklch(47.44% 0.087 259.83)', // #3E5C8D
 					accent: '#d95100',
 					neutral: 'oklch(99% 0 0)',
 					'base-100': '#F1F4F9',
