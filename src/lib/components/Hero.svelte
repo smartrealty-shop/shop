@@ -13,7 +13,7 @@
 	};
 </script>
 
-<div class="heroo p-2">
+<div class="heroo p-2 pr-0 md:pr-6">
 	<div class="hero-contentt">
 		<div class="">
 			{#if counter !== null}
@@ -37,7 +37,7 @@
 
 <style lang="postcss">
 	img {
-		width: 260px;
+		width: 240px;
 		height: 400px;
 		object-fit: cover;
 		object-position: left top;
@@ -63,7 +63,7 @@
 		justify-content: space-between;
 		/* justify-content: center; */
 		//max-width: 80rem; /* 1280px */
-		//gap: 1rem; /* 16px */
+		gap: 1rem; /* 16px */
 		//padding: 1rem; /* 16px */
 	}
 </style>

@@ -45,7 +45,7 @@
 		<main class="py-4">
 			<Hero
 				counter={6286}
-				header="Портал недвижимости в&nbsp;ОАЭ"
+				header="Портал&nbsp;недвижимости в&nbsp;ОАЭ"
 				text="для&nbsp;профессионалов"
 				buttonText="Присоединиться"
 			/>
