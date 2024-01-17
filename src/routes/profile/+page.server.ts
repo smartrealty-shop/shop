@@ -13,7 +13,7 @@ export const load: PageServerLoad = async ({ locals: { getSession, supabase } })
 	//
 	const { data: profile } = await supabase
 		.from('profiles')
-		.select(`username, full_name, website, avatar_url`)
+		.select(`username, full_name, phone, website, avatar_url`)
 		.eq('id', session.user.id)
 		.single();
 
@@ -25,6 +25,7 @@ export const actions: Actions = {
 		const formData = await request.formData();
 		const fullName = formData.get('fullName') as string;
 		const username = formData.get('username') as string;
+		const phone = formData.get('phone') as string;
 		const website = formData.get('website') as string;
 		const avatarUrl = formData.get('avatarUrl') as string;
 
@@ -35,6 +36,7 @@ export const actions: Actions = {
 				id: session.user.id,
 				full_name: fullName,
 				username,
+				phone,
 				website,
 				avatar_url: avatarUrl,
 				updated_at: new Date().toISOString()
@@ -44,6 +46,7 @@ export const actions: Actions = {
 				return fail(500, {
 					fullName,
 					username,
+					phone,
 					website,
 					avatarUrl
 				});
@@ -53,10 +56,12 @@ export const actions: Actions = {
 		return {
 			fullName,
 			username,
+			phone,
 			website,
 			avatarUrl
 		};
 	},
+
 	signout: async ({ locals: { getSession, supabase } }) => {
 		const session = await getSession();
 		if (session) {

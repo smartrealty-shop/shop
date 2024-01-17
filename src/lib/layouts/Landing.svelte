@@ -1,5 +1,5 @@
 <script lang="ts">
-	import logo from '$lib/images/logo.webp';
+	import logoWithText from '$lib/images/logo-with-text.svg';
 
 	import Hero from '$lib/components/Hero.svelte';
 	import CardsGrid from '$lib/components/CardsGrid.svelte';
@@ -36,10 +36,16 @@
 <div class="bg-base-100">
 	<div class="container mx-auto max-w-screen-lg">
 		<nav class="navbar">
-			<div class="flex-1 whitespace-nowrap text-2xl font-semibold">
+			<div class="navbar-start">
+				<!--  -->
+			</div>
+			<div class="navbar-center">
 				<a href="/" class="">
-					<img class="h-8" src={logo} alt="logo" />
+					<img class="h-10" src={logoWithText} alt="logo" />
 				</a>
+			</div>
+			<div class="navbar-end">
+				<!--  -->
 			</div>
 		</nav>
 		<main class="py-4">

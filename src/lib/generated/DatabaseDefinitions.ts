@@ -34,11 +34,169 @@ export interface Database {
   }
   public: {
     Tables: {
+      buildings: {
+        Row: {
+          complex_id: string
+          floors_basement: number
+          floors_common: number
+          floors_ground: number
+          floors_parking: number
+          floors_roof: number
+          id: string
+          name: string
+          type: string
+        }
+        Insert: {
+          complex_id: string
+          floors_basement?: number
+          floors_common?: number
+          floors_ground?: number
+          floors_parking?: number
+          floors_roof?: number
+          id?: string
+          name: string
+          type: string
+        }
+        Update: {
+          complex_id?: string
+          floors_basement?: number
+          floors_common?: number
+          floors_ground?: number
+          floors_parking?: number
+          floors_roof?: number
+          id?: string
+          name?: string
+          type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "buildings_complex_id_fkey"
+            columns: ["complex_id"]
+            isOneToOne: false
+            referencedRelation: "complexes"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      cities: {
+        Row: {
+          name: string
+          slug: string
+        }
+        Insert: {
+          name: string
+          slug: string
+        }
+        Update: {
+          name?: string
+          slug?: string
+        }
+        Relationships: []
+      }
+      complexes: {
+        Row: {
+          completed_at: string
+          coordinates: unknown
+          description: string
+          developer_slug: string
+          district_slug: string
+          id: string
+          is_furnished: boolean | null
+          name: string
+          status: string
+          w3w: string
+        }
+        Insert: {
+          completed_at: string
+          coordinates: unknown
+          description: string
+          developer_slug: string
+          district_slug: string
+          id?: string
+          is_furnished?: boolean | null
+          name: string
+          status: string
+          w3w: string
+        }
+        Update: {
+          completed_at?: string
+          coordinates?: unknown
+          description?: string
+          developer_slug?: string
+          district_slug?: string
+          id?: string
+          is_furnished?: boolean | null
+          name?: string
+          status?: string
+          w3w?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "complexes_developer_slug_fkey"
+            columns: ["developer_slug"]
+            isOneToOne: false
+            referencedRelation: "developers"
+            referencedColumns: ["slug"]
+          },
+          {
+            foreignKeyName: "complexes_districts_slug_fk"
+            columns: ["district_slug"]
+            isOneToOne: false
+            referencedRelation: "districts"
+            referencedColumns: ["slug"]
+          }
+        ]
+      }
+      developers: {
+        Row: {
+          name: string
+          slug: string
+          url: string
+        }
+        Insert: {
+          name: string
+          slug: string
+          url: string
+        }
+        Update: {
+          name?: string
+          slug?: string
+          url?: string
+        }
+        Relationships: []
+      }
+      districts: {
+        Row: {
+          city_slug: string
+          name: string
+          slug: string
+        }
+        Insert: {
+          city_slug: string
+          name: string
+          slug: string
+        }
+        Update: {
+          city_slug?: string
+          name?: string
+          slug?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "districts_city_slug_fkey"
+            columns: ["city_slug"]
+            isOneToOne: false
+            referencedRelation: "cities"
+            referencedColumns: ["slug"]
+          }
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null
           full_name: string | null
           id: string
+          phone: string | null
           updated_at: string | null
           username: string | null
           website: string | null
@@ -47,6 +205,7 @@ export interface Database {
           avatar_url?: string | null
           full_name?: string | null
           id: string
+          phone?: string | null
           updated_at?: string | null
           username?: string | null
           website?: string | null
@@ -55,6 +214,7 @@ export interface Database {
           avatar_url?: string | null
           full_name?: string | null
           id?: string
+          phone?: string | null
           updated_at?: string | null
           username?: string | null
           website?: string | null
@@ -65,6 +225,47 @@ export interface Database {
             columns: ["id"]
             isOneToOne: true
             referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      units: {
+        Row: {
+          area: number
+          bedrooms: string
+          building_id: string
+          floor: number | null
+          id: string
+          number: number | null
+          price: number
+          type: string
+        }
+        Insert: {
+          area: number
+          bedrooms: string
+          building_id: string
+          floor?: number | null
+          id?: string
+          number?: number | null
+          price: number
+          type: string
+        }
+        Update: {
+          area?: number
+          bedrooms?: string
+          building_id?: string
+          floor?: number | null
+          id?: string
+          number?: number | null
+          price?: number
+          type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "units_building_id_fkey"
+            columns: ["building_id"]
+            isOneToOne: false
+            referencedRelation: "buildings"
             referencedColumns: ["id"]
           }
         ]

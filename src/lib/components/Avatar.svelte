@@ -72,32 +72,44 @@
 	$: if (url) downloadImage(url);
 </script>
 
-<div class="bg-accent">
-	<!-- object-cover h-40 w-40 -->
-	{#if avatarUrl}
-		<!-- avatar image object-cover h-40 w-40 -->
-		<img class="" src={avatarUrl} alt={avatarUrl ? 'Avatar' : 'No image'} />
-	{:else}
-		<!-- avatar no-image -->
-		<!--  style="height: {size}em; width: {size}em;" -->
-		<div class=""></div>
-	{/if}
-	<input type="hidden" name="avatarUrl" value={url} />
-
-	<!--  style="width: {size}em;" -->
-	<div>
-		<label class="btn">
-			{uploading ? 'Uploading ...' : 'Upload'}
-			<!-- FIXME style prop produce bad markup -->
-			<input
-				style="visibility: hidden; position:absolute;"
-				type="file"
-				accept="image/*"
-				bind:files
-				on:change={uploadAvatar}
-				disabled={uploading}
-			/>
+<div class="flex flex-col">
+	<div class="form-control w-full max-w-lg">
+		<!-- <label class="label font-medium pb-1" for="avatar">
+				<span class="label-text">Profile Picture</span>
+			</label> -->
+		<label
+			for="avatar"
+			class="avatar w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 hover:cursor-pointer"
+		>
+			<label for="avatar" class="absolute -bottom-0.5 -right-0.5 hover:cursor-pointer">
+				<span class="btn btn-circle btn-sm btn-secondary">
+					<Icon icon="lucide:pen" width="1rem" height="1rem" />
+				</span>
+			</label>
+			<div class="w-32 rounded-full">
+				{#if avatarUrl}
+					<img src={avatarUrl} alt={avatarUrl ? 'Avatar' : 'No image'} class="" />
+				{:else}
+					<div class="avatar placeholder">
+						<div class="rounded-full w-32">
+							<span class="text-xl">No image</span>
+						</div>
+					</div>
+				{/if}
+			</div>
 		</label>
+		<!-- <input type="file" name="avatar" id="avatar" value="" accept="image/*" hidden class="" on:change={showPreview} /> -->
+		<input type="hidden" name="avatarUrl" value={url} />
+		<input
+			type="file"
+			name="avatar"
+			id="avatar"
+			accept="image/*"
+			hidden
+			bind:files
+			on:change={uploadAvatar}
+			disabled={uploading}
+		/>
 	</div>
 </div>
 

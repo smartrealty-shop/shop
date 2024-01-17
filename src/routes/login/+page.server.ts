@@ -55,9 +55,9 @@ export const actions: Actions = {
 			return fail(500, {
 				message: error.message ?? 'We had a problem logging you in! Try again?',
 				email
-			})
+			});
 		}
 
-		return {email}
+		return { email };
 	}
 };

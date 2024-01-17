@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Landing from "$lib/layouts/Landing.svelte";
+	import Landing from '$lib/layouts/Landing.svelte';
 
 	//
 </script>
